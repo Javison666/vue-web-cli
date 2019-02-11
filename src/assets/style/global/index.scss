@@ -1,0 +1,49 @@
+@import './_img.scss';
+// @font-face {
+//     font-family: "Press Start 2P";   /*字体名称*/
+//     src: url('/static/font/kongtext.ttf');       /*字体源文件*/
+// }
+// *{
+//     font-family: "Press Start 2P"!important;
+// }
+
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+    text-decoration: none;
+}
+
+.flex-center,[flex-center]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.w12{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.pos-abs-cover {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.jj-input{
+    border:1px solid #a0d6b0b4;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    padding-left:.4rem;
+    padding-right:.4rem;
+    border-radius: 4px;
+    transition: all .2s;
+    &:focus,&:active{
+        border:1px solid #6ed48d;
+        outline: none;
+    }
+}
