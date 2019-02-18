@@ -1,10 +1,5 @@
 <template>
     <div id="app">
-        <!-- <a
-            href="#"
-            style="position:fixed;z-index:1000;right:10px;top:10px;font-size:12px;text-decoration:none;"
-            @click.prevent="audioPlayState=!audioPlayState;audioPlay(audioPlayState)"
-        >音乐开关</a>-->
         <transition name="slide-fade">
             <router-view v-if="!$route.meta.keepAlive"/>
         </transition>
@@ -17,7 +12,6 @@
 </template>
 <script>
 /* eslint-disable */
-import Audio from "@/utils/audio";
 import domFn from "@/utils/dom";
 import { mapActions } from "vuex";
 export default {
@@ -27,33 +21,17 @@ export default {
         };
     },
     mounted() {
-        // setTimeout(() => {
-        //     Audio.loopPlay("/music/weiweiyixiao.mp3", "weiweiyixiao");
-        // })
         this.$store.dispatch("user/udtInfo");
         //	更新窗口大小
         domFn.addListen(window, "resize", () => {
             this.updateWindowSize();
         });
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker
-                .register("/sw.js")
-                .then((reg) => {
-                    console.log("service worker registed!");
-                })
-                // .reject(err => {
-                //     console.log("Opooos, something wrong happend!");
-                // });
-        }
     },
     methods: {
         ...mapActions([
             "global/actionSetWindowWidth",
             "global/actionSetWindowHeight"
         ]),
-        audioPlay(state) {
-            Audio.switchPlay("weiweiyixiao", state);
-        },
         updateWindowSize() {
             this["global/actionSetWindowWidth"](window.innerWidth);
             this["global/actionSetWindowHeight"](window.innerHeight);
