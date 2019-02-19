@@ -12,14 +12,6 @@ function AjaxJson(url, method, args, fn, dataType) {
 	ajax.Args = args;
 	ajax.onSuccess = function (xhr) {
 		var text = xhr.responseText;
-		// 请求头数据处理
-		let jjAppHeader=xhr.getResponseHeader('jj-app')
-		if(jjAppHeader && window.App){
-			jjAppHeader=JSON.parse(jjAppHeader)
-			if(window.App.$store.state.global.auth!=jjAppHeader.auth){
-				window.App.$store.dispatch('global/actionSetAuth',jjAppHeader.auth)
-			}
-		}
 		if (text.charCodeAt() == 65279) text = text.substring(1); //处理utf8引导字节
 		eval("obj=" + text);
 		fn(obj,xhr)
@@ -131,15 +123,7 @@ class http {
 	}
 	wrongCodeTest() {
 		// try {
-		// 	// 未登录拦截
-		// 	if (data.code == 402) {
-		// 		maskCom({
-		// 			txt: ['您暂未登录或登录超时，请前往登录！'],
-		// 			firstBtnTxt: '前往登录',
-		// 			firstBtnFn: () => {
-		// 				$nuxt.$store.dispatch('login/actionShowLoginBox')
-		// 			}
-		// 		})
+		// 	if (data.code == 400) {
 		// 	}
 		// } catch (err) {
 		// 	console.log(err)

@@ -2,7 +2,6 @@
 export default [{
         path: '/',
         name: 'index',
-        // redirect: PAGE_API.home.path,
         component: () =>
             import('@/pages/Index'),
     },
